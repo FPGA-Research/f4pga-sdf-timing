@@ -157,9 +157,19 @@ def t_SLASH(t):
     return t
 
 
+# OLD STRING rule causing problems
+# with tokens like $
+# def t_STRING(t):
+#    r'[a-zA-Z0-9_\/.\[\]\\]+'
+#    t.type = reserved.get(t.value, 'STRING')
+#    return t
 def t_STRING(t):
-    r'[a-zA-Z0-9_\/.\[\]\\]+'
-    t.type = reserved.get(t.value, 'STRING')
+    # Unquoted identifiers / instance names / nets
+    # Allowed chars:
+    #   - letters, digits, underscore
+    #   - $, /, ., [, ], \
+    r"[a-zA-Z0-9_\$/.\[\]\\]+"
+    t.type = reserved.get(t.value, "STRING")
     return t
 
 
