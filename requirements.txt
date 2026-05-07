@@ -2,6 +2,7 @@
 setuptools>=42
 setuptools_scm
 wheel
+vcs-versioning
 # Testing tools
 pytest
 yapf==0.24.0
